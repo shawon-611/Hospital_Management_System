@@ -32,14 +32,18 @@ public class Doctor extends Person{
     {
         this.qualification = qualification;
     }
-    public int setSalary(int salary)
+    public void setSalary(int salary)
     {
         this.salary = salary;
     }
 
+    @Override
+    public void displayInfo()
+    {
+        super.displayInfo();
+        System.out.println("Doctor Specialized in: "+ specialization);
+        System.out.println("Doctor's Qualification is: "+ qualification);
+        System.out.println("Doctor's Salary: "+ salary+"$");
+    }
+
 }
-
-
-
-
-
