@@ -11,5 +11,35 @@ public class Doctor extends Person{
         this.qualification = qualification;
         this.salary = salary;
     }
+    public String getSpecialization()
+    {
+        return specialization;
+    }
+    public String getQualification()
+    {
+        return qualification;
+    }
+    public int getSalary()
+    {
+        return salary;
+    }
+
+    public void setSpecialization(String specialization)
+    {
+        this.specialization = specialization;
+    }
+    public void setQualification(String qualification)
+    {
+        this.qualification = qualification;
+    }
+    public int setSalary(int salary)
+    {
+        this.salary = salary;
+    }
 
 }
+
+
+
+
+
