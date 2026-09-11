@@ -48,8 +48,6 @@ public class Patient extends Person{
         System.out.println("Patient Blood Group: "+ blood_group);
     }
 
-
-
 }
 
 
