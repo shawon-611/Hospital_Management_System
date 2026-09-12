@@ -3,14 +3,13 @@ public abstract class Person {
     private String name;
     private int id;
     private String phone_number;
-    private String address;
 
-    Person(String name, int id, String phone_number, String address)
+
+    Person(String name, int id, String phone_number)
     {
         this.name = name;
         this.id = id;
         this.phone_number = phone_number;
-        this.address = address;
     }
 
     public String getName()
@@ -25,10 +24,6 @@ public abstract class Person {
     {
         return phone_number;
     }
-    public String getAddress()
-    {
-        return address;
-    }
 
     public void setName(String name)
     {
@@ -38,13 +33,8 @@ public abstract class Person {
     {
         this.phone_number = phone_number;
     }
-    public void setAddress(String address)
-    {
-        this.address = address;
-    }
+
     public abstract void displayInfo();
-
-
 
 
 }
