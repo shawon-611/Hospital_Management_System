@@ -53,6 +53,7 @@ public class Patient extends Person{
     @Override
     public void displayInfo()
     {
+        System.out.println("---Patient Details---\n");
         System.out.println("Patient Name: "+ getName());
         System.out.println("Patient ID: "+ getID());
         System.out.println("Patient Phone Number: "+ getPhone_Number());
@@ -60,6 +61,7 @@ public class Patient extends Person{
         System.out.println("Patient Address: "+ address);
         System.out.println("Patient Diseases: "+ diseases);
         System.out.println("Patient Blood Group: "+ blood_group);
+        System.out.println(" ");
     }
 
 }
