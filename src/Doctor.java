@@ -4,9 +4,9 @@ public class Doctor extends Person{
     private String qualification;
     private int salary;
 
-    Doctor(String name, int id, String phone_number, String address, String specialization, String qualification, int salary)
+    Doctor(String name, int id, String phone_number, String specialization, String qualification, int salary)
     {
-        super(name, id, phone_number, address);
+        super(name, id, phone_number);
         this.specialization = specialization;
         this.qualification = qualification;
         this.salary = salary;
@@ -40,10 +40,11 @@ public class Doctor extends Person{
     @Override
     public void displayInfo()
     {
-        super.displayInfo();
-        System.out.println("Doctor Specialized in: "+ specialization);
+        System.out.println("Doctor Name: "+ getName());
+        System.out.println("Doctor ID: "+ getID());
+        System.out.println("Doctor Phone Number: "+ getPhone_Number());
+        System.out.println("Doctor's Specialization: "+ specialization);
         System.out.println("Doctor's Qualification is: "+ qualification);
         System.out.println("Doctor's Salary: "+ salary+"$");
     }
-
 }
