@@ -40,11 +40,13 @@ public class Doctor extends Person{
     @Override
     public void displayInfo()
     {
+        System.out.println("---Doctor Details---\n");
         System.out.println("Doctor Name: "+ getName());
         System.out.println("Doctor ID: "+ getID());
         System.out.println("Doctor Phone Number: "+ getPhone_Number());
         System.out.println("Doctor's Specialization: "+ specialization);
         System.out.println("Doctor's Qualification is: "+ qualification);
         System.out.println("Doctor's Salary: "+ salary+"$");
+        System.out.println(" ");
     }
 }
