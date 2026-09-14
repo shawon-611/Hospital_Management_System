@@ -34,6 +34,7 @@ public class Doctor extends Person{
     }
     public void setSalary(int salary)
     {
+        
         this.salary = salary;
     }
 
