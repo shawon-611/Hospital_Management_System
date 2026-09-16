@@ -4,7 +4,6 @@ public abstract class Person {
     private int id;
     private String phone_number;
 
-
     Person(String name, int id, String phone_number)
     {
         this.name = name;
