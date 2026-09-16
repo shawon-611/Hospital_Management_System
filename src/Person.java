@@ -36,9 +36,7 @@ public abstract class Person {
 
     public abstract void displayInfo();
 
-    public void test(){
-        System.out.println("'Tthis is test func");
-    }
+
 
 
 }
