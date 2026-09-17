@@ -54,7 +54,7 @@ public class HospitalManagementSystem {
 
                     Patient patient = new Patient(name, id, phone_number, age, address, diseases, blood_group);
                     PatientList.add(patient);
-                    System.out.println("Patient added successfully\n");
+                    System.out.println("\nPatient added successfully\n");
                     break;
                 }
                 case 2:
@@ -122,7 +122,182 @@ public class HospitalManagementSystem {
                     }
                     break;
                 }
+                case 5:
+                {
+                    System.out.println("Exiting Hospital Management System" + "\nThanks for using the management system");
+                    break;
+                }
+                default:
+                {
+                    System.out.println("\nInvalid choice, Please try again\n");
+                    break;
+                }
             }
         }
     }
+
+    public void DoctorCRUD()
+    {
+        Scanner scanner = new Scanner(System.in);
+        int choice = -1;
+        while(choice != 5)
+        {
+            choice = -1;
+            System.out.println("Enter what you want to do:");
+            System.out.println("1. Assign Doctor\n" + "2. View Doctor\n" + "3. Update Doctor\n" + "4. Delete Doctor\n" + "5. Exit\n");
+
+            while(choice<1 || choice>5)
+            {
+                System.out.print("\nEnter your choice: ");
+                try {
+                    choice = scanner.nextInt();
+                    System.out.println(" ");
+                    if(choice<1 || choice>5)
+                    {
+                        System.out.println("Invalid choice, Please Enter between 1 and 4");
+                    }
+                }catch (Exception e){
+                    System.out.println("Invalid Choice");
+                    scanner.nextLine();
+                }
+            }
+            switch (choice)
+            {
+                case 1:
+                {
+                    System.out.print("Enter Doctor Name: ");
+                    String name = scanner.next();
+                    System.out.print("Enter Doctor ID: ");
+                    int id = scanner.nextInt();
+                    System.out.print("Enter Doctor Phone Number: ");
+                    String phone_number = scanner.next();
+                    System.out.print("Specialization of Doctor: ");
+                    String specialization = scanner.next();
+                    System.out.print("Qualification of Doctor: ");
+                    String qualification = scanner.next();
+                    System.out.print("Doctor's Salary: ");
+                    int salary = scanner.nextInt();
+
+                    Doctor doctor = new Doctor(name, id, phone_number, specialization, qualification, salary);
+                    DoctorList.add(doctor);
+                    System.out.println("\nDoctor assigned successfully\n");
+                    break;
+                }
+                case 2:
+                {
+                    for(Doctor doctor : DoctorList)
+                    {
+                        doctor.displayInfo();
+                    }
+                    break;
+                }
+                case 3:
+                {
+                    try{
+                        System.out.println("Search Doctor ID:  ");
+                        int search_id = scanner.nextInt();
+
+                        for(Doctor doctor : DoctorList)
+                        {
+                            if(doctor.getID() == search_id)
+                            {
+                                System.out.print("Enter New Name: ");
+                                String new_name = scanner.next();
+                                doctor.setName(new_name);
+                                System.out.print("Enter New Phone Number: ");
+                                String new_phone_number = scanner.next();
+                                doctor.setPhone_Number(new_phone_number);
+                                System.out.print("Enter new Doctor's Specialization: ");
+                                String new_specialization = scanner.next();
+                                doctor.setSpecialization(new_specialization);
+                                System.out.print("Enter new Doctor's Qualification: ");
+                                String new_qualification = scanner.next();
+                                doctor.setQualification(new_qualification);
+                                System.out.print("Enter New Doctor's Salary: ");
+                                int new_salary = scanner.nextInt();
+                                doctor.setSalary(new_salary);
+                            }
+                        }
+                    } catch(Exception e)
+                    {
+                        System.out.println("Invalid Input, Please try again");
+                        scanner.nextLine();
+                    }
+                    break;
+                }
+                case 4:
+                {
+                    try{
+                        System.out.println("Search Doctor ID:  ");
+                        int search_id = scanner.nextInt();
+
+                        for(Doctor doctor : DoctorList)
+                        {
+                            if(doctor.getID() == search_id)
+                            {
+                                DoctorList.remove(doctor);
+                                System.out.println("Assigned doctor deleted successfully\n");
+                            }
+                        }
+                    }catch(Exception e)
+                    {
+                        System.out.println("Invalid Input, Please try again");
+                        break;
+                    }
+                }
+                case 5:
+                {
+                    System.out.println("Exiting Hospital Management System" + "\nThanks for using the management system");
+                    break;
+                }
+            }
+        }
+    }
+    public void AppointmentCRUD()
+    {
+        Scanner scanner = new Scanner(System.in);
+        int choice = -1;
+        while(choice!=5)
+        {
+            choice = -1;
+            System.out.println("Enter what you want to do:");
+            System.out.println("1. Create Appointment\n" + "2. View Appointment\n" + "3. Update Appointment\n" + "4. Delete Appointment\n" + "5. Exit\n");
+
+            while(choice<1 || choice>5)
+            {
+                System.out.print("\nEnter your choice: ");
+                try {
+                    choice = scanner.nextInt();
+                    System.out.println(" ");
+                    if(choice<1 || choice>5)
+                    {
+                        System.out.println("Invalid choice, Please Enter between 1 and 4");
+                    }
+                }catch (Exception e){
+                    System.out.println("Invalid Choice");
+                    scanner.nextLine();
+                }
+            }
+            switch(choice)
+            {
+                case 1:
+                {
+                    System.out.print("Enter Appointment ID: ");
+                    int appointment_id = scanner.nextInt();
+                    System.out.print("Enter Patient ID: ");
+                    int patient_id = scanner.nextInt();
+                    System.out.print("Enter Doctor ID: ");
+                    int doctor_id = scanner.nextInt();
+                    System.out.print("Appointment Date: ");
+                    String date = scanner.next();
+                    System.out.print("Appointment Time: ");
+                    String time = scanner.next();
+                    System.out.print("Appointment Reason: ");
+                    String reason = scanner.next();
+
+                }
+            }
+        }
+    }
+
 }
