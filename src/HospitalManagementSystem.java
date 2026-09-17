@@ -31,10 +31,8 @@ public class HospitalManagementSystem {
                 }catch (Exception e){
                     System.out.println("Invalid Choice");
                     scanner.nextLine();
-                    //choice = -1;
                 }
             }
-
             switch (choice)
             {
                 case 1:
@@ -65,15 +63,66 @@ public class HospitalManagementSystem {
                     {
                         patient.displayInfo();
                     }
+                    break;
                 }
+                case 3:
+                {
+                    try{
+                        System.out.println("Search Patient ID:  ");
+                        int search_id = scanner.nextInt();
 
+                        for(Patient patient : PatientList)
+                        {
+                            if(patient.getID() == search_id)
+                            {
+                                System.out.print("Enter New Name: ");
+                                String new_name = scanner.next();
+                                patient.setName(new_name);
+                                System.out.print("Enter New Phone Number: ");
+                                String new_phone_number = scanner.next();
+                                patient.setPhone_Number(new_phone_number);
+                                System.out.print("Enter New Age: ");
+                                int new_age = scanner.nextInt();
+                                patient.setAge(new_age);
+                                System.out.print("Enter New Address: ");
+                                String new_address = scanner.next();
+                                patient.setAddress(new_address);
+                                System.out.print("Enter New Diseases: ");
+                                String new_diseases = scanner.next();
+                                patient.setDiseases(new_diseases);
+                                System.out.print("Enter New Blood Group: ");
+                                String new_blood_group = scanner.next();
+                                patient.setBlood_group(new_blood_group);
+                            }
+                        }
+                    } catch(Exception e)
+                    {
+                        System.out.println("Invalid Input, Please try again");
+                        scanner.nextLine();
+                    }
+                    break;
+                }
+                case 4:
+                {
+                    try{
+                        System.out.println("Search Patient ID:  ");
+                        int search_id = scanner.nextInt();
 
-
+                        for(Patient patient : PatientList)
+                        {
+                            if(patient.getID() == search_id)
+                            {
+                                PatientList.remove(patient);
+                                System.out.println("Patient deleted successfully\n");
+                            }
+                        }
+                    }catch(Exception e)
+                    {
+                        System.out.println("Invalid Input, Please try again");
+                    }
+                    break;
+                }
+            }
         }
-
-
-
-        }
-
     }
 }
