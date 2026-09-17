@@ -250,6 +250,11 @@ public class HospitalManagementSystem {
                     System.out.println("Exiting Hospital Management System" + "\nThanks for using the management system");
                     break;
                 }
+                default:
+                {
+                    System.out.println("\nInvalid choice, Please try again\n");
+                    break;
+                }
             }
         }
     }
@@ -295,9 +300,83 @@ public class HospitalManagementSystem {
                     System.out.print("Appointment Reason: ");
                     String reason = scanner.next();
 
+                    Appointment appointment = new Appointment(appointment_id, patient_id, doctor_id, date, time, reason);
+                    AppointmentList.add(appointment);
+                    System.out.println("\nAppointment Created Successfully\n");
+                    break;
+                }
+                case 2:
+                {
+                    for(Appointment appointment : AppointmentList)
+                    {
+                        appointment.displayInfo();
+                    }
+                    break;
+                }
+                case 3:
+                {
+                    try{
+                        System.out.println("Search Appointment ID: ");
+                        int search_id = scanner.nextInt();
+
+                        for(Appointment appointment : AppointmentList)
+                        {
+                            if(appointment.getAppointment_id() == search_id)
+                            {
+                                System.out.print("Enter Patient ID: ");
+                                int new_patient_id = scanner.nextInt();
+                                appointment.setPatient_id(new_patient_id);
+                                System.out.print("Enter Doctor ID: ");
+                                int new_doctor_id = scanner.nextInt();
+                                appointment.setDoctor_id(new_doctor_id);
+                                System.out.print("Appointment Date: ");
+                                String new_date = scanner.next();
+                                appointment.setDate(new_date);
+                                System.out.print("Appointment Time: ");
+                                String new_time = scanner.next();
+                                appointment.setTime(new_time);
+                                System.out.print("Appointment Reason: ");
+                                String new_reason = scanner.next();
+                                appointment.setReason(new_reason);
+                            }
+                        }
+                    }catch(Exception e) {
+                        System.out.println("Invalid Input, Please try again");
+                        scanner.nextLine();
+                    }
+                    break;
+                }
+                case 4:
+                {
+                    try{
+                        System.out.println("Search Appointment ID: ");
+                        int search_id =  scanner.nextInt();
+                        for(Appointment appointment : AppointmentList)
+                        {
+                            if(appointment.getAppointment_id() == search_id)
+                            {
+                                AppointmentList.remove(appointment);
+                            }
+                        }
+                    } catch(Exception e) {
+                        System.out.println("Invalid Input, Please try again");
+                        scanner.nextLine();
+                    }
+                    break;
+                }
+                case 5:
+                {
+                    System.out.println("Exiting Hospital Management System" + "\nThanks for using the management system");
+                    break;
+                }
+                default:
+                {
+                    System.out.println("\nInvalid choice, Please try again\n");
+                    break;
                 }
             }
         }
     }
+
 
 }
