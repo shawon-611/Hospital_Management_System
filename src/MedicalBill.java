@@ -61,7 +61,8 @@ public class MedicalBill {
         System.out.println("---Bill Details---\n");
         System.out.println("Bill ID: "+ bill_id);
         System.out.println("Patient ID: "+ patient_id);
-        System.out.println("Bill Amount: "+ bill_date);
+        System.out.println("Bill Amount: "+ amount);
+        System.out.println("Bill Date: "+ bill_date);
         System.out.println("Payment Status: "+ payment_status);
         System.out.println(" ");
     }
