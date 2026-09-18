@@ -62,25 +62,35 @@ public class HospitalManagementSystem {
                         {
                             case 1:
                             {
-                                System.out.print("Enter Patient Name: ");
-                                String name = scanner.next();
-                                System.out.print("Enter Patient ID: ");
-                                int id = scanner.nextInt();
-                                System.out.print("Enter Patient Phone Number: ");
-                                String phone_number = scanner.next();
-                                System.out.print("Enter Patient Age: ");
-                                int age = scanner.nextInt();
-                                System.out.print("Enter Patient Address: ");
-                                String address = scanner.next();
-                                System.out.print("Enter Patient Diseases: ");
-                                String diseases = scanner.next();
-                                System.out.print("Enter Patient Blood Group: ");
-                                String blood_group = scanner.next();
+                                try{
+                                    System.out.print("Enter Patient Name: ");
+                                    String name = scanner.next();
+                                    System.out.print("Enter Patient ID: ");
+                                    int id = scanner.nextInt();
+                                    for(Patient patient : PatientList) {
+                                        if(patient.getID() == id) {
+                                            throw new CustomException("Patient ID already exists");
+                                        }
+                                    }
+                                    System.out.print("Enter Patient Phone Number: ");
+                                    String phone_number = scanner.next();
+                                    System.out.print("Enter Patient Age: ");
+                                    int age = scanner.nextInt();
+                                    System.out.print("Enter Patient Address: ");
+                                    String address = scanner.next();
+                                    System.out.print("Enter Patient Diseases: ");
+                                    String diseases = scanner.next();
+                                    System.out.print("Enter Patient Blood Group: ");
+                                    String blood_group = scanner.next();
 
-                                Patient patient = new Patient(name, id, phone_number, age, address, diseases, blood_group);
-                                PatientList.add(patient);
-                                System.out.println("\nPatient added successfully\n");
-                                break;
+                                    Patient patient = new Patient(name, id, phone_number, age, address, diseases, blood_group);
+                                    PatientList.add(patient);
+                                    System.out.println("\nPatient added successfully\n");
+                                    break;
+                                } catch(CustomException e) {
+                                    System.out.println(e.getMessage());
+                                }
+
                             }
                             case 2:
                             {
