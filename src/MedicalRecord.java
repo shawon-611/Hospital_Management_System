@@ -39,11 +39,20 @@ public class MedicalRecord {
     public void setRecordIdId(String record_id){
         this.record_id = record_id;
     }
-    public void setTreatment(String treatment){
-        this.treatment = treatment;
-    }
     public void setDiagnosis(String diagnosis){
         this.diagnosis = diagnosis;
     }
+    public void setTreatment(String treatment){
+        this.treatment = treatment;
+    }
 
+    public void displayInfo() {
+        System.out.println("---Medical Records---\n");
+        System.out.println("Record ID: " + record_id);
+        System.out.println("Patient ID: " + patient_id);
+        System.out.println("Doctor ID: " + doctor_id);
+        System.out.println("Diagnosis: " + diagnosis);
+        System.out.println("Treatment: " + treatment);
+        System.out.println(" ");
+    }
 }
