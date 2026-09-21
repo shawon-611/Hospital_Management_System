@@ -6,6 +6,7 @@ public class HospitalManagementSystem {
     private ArrayList<Patient> PatientList = new ArrayList<>();
     private ArrayList<Doctor> DoctorList = new ArrayList<>();
     private ArrayList<Appointment> AppointmentList = new ArrayList<>();
+    private ArrayList<MedicalRecord> MedicalRecordList = new ArrayList<>();
 
     public void MainMenu() {
 
@@ -14,8 +15,8 @@ public class HospitalManagementSystem {
             select_menu = -1;
             Scanner input = new Scanner(System.in);
             System.out.println("Please choose from the following options:");
-            System.out.println("1. PatientCRUD\n" + "2. DoctorCRUD\n" + "3. AppointmentCRUD\n" + "4. Exit\n");
-            while(select_menu<1 || select_menu>4)
+            System.out.println("1. PatientCRUD\n" + "2. DoctorCRUD\n" + "3. AppointmentCRUD\n" + "4. Medical Record CRUD\n" + "5. Exit\n");
+            while(select_menu<1 || select_menu>5)
             {
                 System.out.print("\nEnter Menu Choice: ");
                 try {
@@ -439,6 +440,133 @@ public class HospitalManagementSystem {
                     break;
                 }
                 case 4: {
+                    //MedicalRecordCRUD
+                    Scanner scanner = new Scanner(System.in);
+                    int choice = -1;
+                    while(choice!=5)
+                    {
+                        choice = -1;
+                        System.out.println("Enter what you want to do:");
+                        System.out.println("1. Create Medical Record\n" + "2. View Medical Record\n" + "3. Update Medical Record\n" + "4. Delete Medical Record\n" + "5. Exit\n");
+
+                        while(choice<1 || choice>5)
+                        {
+                            System.out.print("\nEnter your choice: ");
+                            try {
+                                choice = scanner.nextInt();
+                                System.out.println(" ");
+                                if(choice<1 || choice>5)
+                                {
+                                    System.out.println("Invalid choice, Please Enter between 1 and 4");
+                                }
+                            }catch (Exception e){
+                                System.out.println("Invalid Choice");
+                                scanner.nextLine();
+                            }
+                        }
+                        switch(choice)
+                        {
+                            case 1:
+                            {
+                                System.out.print("Enter Record ID: ");
+                                int record_id = scanner.nextInt();
+                                System.out.print("Enter Patient ID: ");
+                                int patient_id = scanner.nextInt();
+                                System.out.print("Enter Doctor ID: ");
+                                int doctor_id = scanner.nextInt();
+                                System.out.print("Diagnosis: ");
+                                String diagnosis = scanner.next();
+                                System.out.print("Treatment: ");
+                                String treatment = scanner.next();
+
+                                MedicalRecord medicalRecord = new MedicalRecord(record_id, patient_id, doctor_id, diagnosis, treatment);
+                                MedicalRecordList.add(medicalRecord);
+                                System.out.println("\nMedical Record Created Successfully\n");
+                                break;
+                            }
+                            case 2:
+                            {
+                                for(MedicalRecord medicalRecord : MedicalRecordList)
+                                {
+                                    medicalRecord.displayInfo();
+                                }
+                                break;
+                            }
+                            case 3:
+                            {
+                                try{
+                                    System.out.println("Search Record ID: ");
+                                    int search_id = scanner.nextInt();
+
+                                    for(MedicalRecord medicalRecord : MedicalRecordList)
+                                    {
+                                        if(medicalRecord.getRecordId() == search_id)
+                                        {
+                                            /*System.out.print("Enter Record ID: ");
+                                            int record_id = scanner.nextInt();
+                                            medicalRecord.setRecordID(new_record_id);*/
+                                            System.out.print("Enter Patient ID: ");
+                                            int new_patient_id = scanner.nextInt();
+                                            medicalRecord.setPatient_id(new_patient_id);
+                                            System.out.print("Enter Doctor ID: ");
+                                            int new_doctor_id = scanner.nextInt();
+                                            medicalRecord.setDoctor_id(new_doctor_id);
+                                            System.out.print("Diagnosis: ");
+                                            String new_diagnosis = scanner.next();
+                                            medicalRecord.setDiagnosis(new_diagnosis);
+                                            System.out.print("Treatment: ");
+                                            String new_treatment = scanner.next();
+                                            medicalRecord.setTreatment(new_treatment);
+
+                                        }
+                                        else {
+                                            System.out.println("Medical Record not found");
+                                            break;
+                                        }
+                                    }
+                                }catch(Exception e) {
+                                    System.out.println("Invalid Input, Please try again");
+                                    scanner.nextLine();
+                                }
+                                break;
+                            }
+                            case 4:
+                            {
+                                try{
+                                    System.out.println("Search Record ID: ");
+                                    int search_id =  scanner.nextInt();
+                                    for(MedicalRecord medicalRecord : MedicalRecordList)
+                                    {
+                                        if(medicalRecord.getRecordId() == search_id)
+                                        {
+                                            AppointmentList.remove(medicalRecord);
+                                        }
+                                        else {
+                                            System.out.println("Medical Record not found");
+                                            break;
+                                        }
+                                    }
+                                } catch(Exception e) {
+                                    System.out.println("Invalid Input, Please try again");
+                                    scanner.nextLine();
+                                }
+                                break;
+                            }
+                            case 5:
+                            {
+                                System.out.println("Exiting Hospital Management System" + "\nThanks for using the management system");
+                                break;
+                            }
+                            default:
+                            {
+                                System.out.println("\nInvalid choice, Please try again\n");
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                }
+                case 5: {
                     System.out.println("Exiting Hospital Management System" + "\nThanks for using the management system");
                     break;
                 }
