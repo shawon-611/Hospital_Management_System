@@ -1,12 +1,12 @@
 public class MedicalRecord {
 
-    private String record_id;
-    private String patient_id;
-    private String doctor_id;
+    private int record_id;
+    private int patient_id;
+    private int doctor_id;
     private String diagnosis;
     private String treatment;
 
-    MedicalRecord(String record_id, String patient_id, String doctor_id, String diagnosis, String treatment)
+    MedicalRecord(int record_id, int patient_id, int doctor_id, String diagnosis, String treatment)
     {
         this.record_id =  record_id;
         this.patient_id = patient_id;
@@ -14,15 +14,16 @@ public class MedicalRecord {
         this.diagnosis = diagnosis;
         this.treatment = treatment;
     }
-    public String getRecordId(){
+    public int getRecordId(){
         return  this.record_id;
     }
-    public String getDoctorId(){
-        return  this.doctor_id;
-    }
-    public String getPatientId(){
+    public int getPatient_id(){
         return  this.patient_id;
     }
+    public int getDoctor_id(){
+        return  this.doctor_id;
+    }
+
     public String getDiagnosisId(){
         return  this.diagnosis;
     }
@@ -30,20 +31,29 @@ public class MedicalRecord {
         return  this.treatment;
     }
 
-    public void setDoctorId(String doctor_id){
-        this.doctor_id = doctor_id;
-    }
-    public void setPatientId(String patient_id){
+    public void setPatient_id(int patient_id){
         this.patient_id = patient_id;
     }
-    public void setRecordIdId(String record_id){
-        this.record_id = record_id;
+    public void setDoctor_id(int doctor_id){
+        this.doctor_id = doctor_id;
     }
-    public void setTreatment(String treatment){
-        this.treatment = treatment;
+    public void setRecordIdId(int record_id){
+        this.record_id = record_id;
     }
     public void setDiagnosis(String diagnosis){
         this.diagnosis = diagnosis;
     }
+    public void setTreatment(String treatment){
+        this.treatment = treatment;
+    }
 
+    public void displayInfo() {
+        System.out.println("---Medical Records---\n");
+        System.out.println("Record ID: " + record_id);
+        System.out.println("Patient ID: " + patient_id);
+        System.out.println("Doctor ID: " + doctor_id);
+        System.out.println("Diagnosis: " + diagnosis);
+        System.out.println("Treatment: " + treatment);
+        System.out.println(" ");
+    }
 }
