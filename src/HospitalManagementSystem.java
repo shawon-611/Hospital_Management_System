@@ -2,10 +2,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HospitalManagementSystem {
-
     private ArrayList<Patient> PatientList = new ArrayList<>();
     private ArrayList<Doctor> DoctorList = new ArrayList<>();
     private ArrayList<Appointment> AppointmentList = new ArrayList<>();
+
+    public ArrayList<Patient> getPatientList() {
+        return PatientList;
+    }
+    public ArrayList<Doctor> getDoctorList() {
+        return DoctorList;
+    }
+    public ArrayList<Appointment> getAppointmentList() {
+        return AppointmentList;
+    }
 
     public void MainMenu() {
 
@@ -23,10 +32,10 @@ public class HospitalManagementSystem {
                     System.out.println(" ");
                     if(select_menu<1 || select_menu>5)
                     {
-                        System.out.println("Invalid choice, Please Enter between 1 and 4");
+                        System.out.println("\nInvalid choice, Please Enter between 1 and 4\n");
                     }
                 }catch (Exception e){
-                    System.out.println("Invalid Choice");
+                    System.out.println("Invalid Choice\n");
                     input.nextLine();
                 }
             }
@@ -41,7 +50,7 @@ public class HospitalManagementSystem {
                     {
                         choice = -1;
                         System.out.println("Enter what you want to do:");
-                        System.out.println("1. Create Patient\n" + "2. View Patient\n" + "3. Update Patient\n" + "4. Delete Patient\n" + "5. Exit\n");
+                        System.out.println("1. Create Patient\n" + "2. View Patient\n" + "3. Update Patient\n" + "4. Delete Patient\n" + "5. Exit From PatientCRUD\n");
 
                         while(choice<1 || choice>5)
                         {
@@ -51,10 +60,10 @@ public class HospitalManagementSystem {
                                 System.out.println(" ");
                                 if(choice<1 || choice>5)
                                 {
-                                    System.out.println("Invalid choice, Please Enter between 1 and 4");
+                                    System.out.println("\nInvalid choice, Please Enter between 1 and 4\n");
                                 }
                             }catch (Exception e){
-                                System.out.println("Invalid Choice");
+                                System.out.println("\nInvalid Choice");
                                 scanner.nextLine();
                             }
                         }
@@ -69,7 +78,7 @@ public class HospitalManagementSystem {
                                     int id = scanner.nextInt();
                                     for(Patient patient : PatientList) {
                                         if(patient.getID() == id) {
-                                            throw new CustomException("Patient ID already exists");
+                                            throw new CustomException("\nPatient ID already exists\n");
                                         }
                                     }
                                     System.out.print("Enter Patient Phone Number: ");
@@ -86,11 +95,10 @@ public class HospitalManagementSystem {
                                     Patient patient = new Patient(name, id, phone_number, age, address, diseases, blood_group);
                                     PatientList.add(patient);
                                     System.out.println("\nPatient added successfully\n");
-                                    break;
                                 } catch(CustomException e) {
                                     System.out.println(e.getMessage());
                                 }
-
+                                break;
                             }
                             case 2:
                             {
@@ -105,11 +113,13 @@ public class HospitalManagementSystem {
                                 try{
                                     System.out.println("Search Patient ID:  ");
                                     int search_id = scanner.nextInt();
+                                    boolean found = false;
 
                                     for(Patient patient : PatientList)
                                     {
                                         if(patient.getID() == search_id)
                                         {
+                                            found = true;
                                             System.out.print("Enter New Name: ");
                                             String new_name = scanner.next();
                                             patient.setName(new_name);
@@ -129,14 +139,15 @@ public class HospitalManagementSystem {
                                             String new_blood_group = scanner.next();
                                             patient.setBlood_group(new_blood_group);
                                         }
-                                        else {
-                                            System.out.println("Patient not found");
-                                            break;
-                                        }
                                     }
-                                } catch(Exception e)
+                                    if(!found) {
+                                        throw new CustomException("\nPatient not found\n");
+                                    }
+                                } catch(CustomException e)
                                 {
-                                    System.out.println("Invalid Input, Please try again");
+                                    System.out.println(e.getMessage());
+                                } catch(Exception e) {
+                                    System.out.println("\nInvalid Input, Please try again\n");
                                     scanner.nextLine();
                                 }
                                 break;
@@ -146,28 +157,32 @@ public class HospitalManagementSystem {
                                 try{
                                     System.out.println("Search Patient ID:  ");
                                     int search_id = scanner.nextInt();
+                                    boolean found = false;
 
                                     for(Patient patient : PatientList)
                                     {
                                         if(patient.getID() == search_id)
                                         {
+                                            found = true;
                                             PatientList.remove(patient);
-                                            System.out.println("Patient deleted successfully\n");
-                                        }
-                                        else {
-                                            System.out.println("Patient not found");
-                                            break;
+                                            System.out.println("\nPatient deleted successfully\n");
                                         }
                                     }
-                                }catch(Exception e)
+                                    if(!found) {
+                                        throw new CustomException("\nPatient not found\n");
+                                    }
+                                }catch(CustomException e)
                                 {
-                                    System.out.println("Invalid Input, Please try again");
+                                    System.out.println(e.getMessage());
+                                } catch (Exception e) {
+                                    System.out.println("\nInvalid Input, Please try again\n");
+                                    scanner.nextLine();
                                 }
                                 break;
                             }
                             case 5:
                             {
-                                System.out.println("Exiting Hospital Management System" + "\nThanks for using the management system");
+                                System.out.println("\nExiting From PatientCRUD Successfully\n");
                                 break;
                             }
                             default:
@@ -187,7 +202,7 @@ public class HospitalManagementSystem {
                     {
                         choice = -1;
                         System.out.println("Enter what you want to do:");
-                        System.out.println("1. Assign Doctor\n" + "2. View Doctor\n" + "3. Update Doctor\n" + "4. Delete Doctor\n" + "5. Exit\n");
+                        System.out.println("1. Assign Doctor\n" + "2. View Doctor\n" + "3. Update Doctor\n" + "4. Delete Doctor\n" + "5. Exit From DoctorCRUD\n");
 
                         while(choice<1 || choice>5)
                         {
@@ -197,7 +212,7 @@ public class HospitalManagementSystem {
                                 System.out.println(" ");
                                 if(choice<1 || choice>5)
                                 {
-                                    System.out.println("Invalid choice, Please Enter between 1 and 4");
+                                    System.out.println("\nInvalid choice, Please Enter between 1 and 4\n");
                                 }
                             }catch (Exception e){
                                 System.out.println("Invalid Choice");
@@ -208,22 +223,31 @@ public class HospitalManagementSystem {
                         {
                             case 1:
                             {
-                                System.out.print("Enter Doctor Name: ");
-                                String name = scanner.next();
-                                System.out.print("Enter Doctor ID: ");
-                                int id = scanner.nextInt();
-                                System.out.print("Enter Doctor Phone Number: ");
-                                String phone_number = scanner.next();
-                                System.out.print("Specialization of Doctor: ");
-                                String specialization = scanner.next();
-                                System.out.print("Qualification of Doctor: ");
-                                String qualification = scanner.next();
-                                System.out.print("Doctor's Salary: ");
-                                int salary = scanner.nextInt();
+                                try {
+                                    System.out.print("Enter Doctor Name: ");
+                                    String name = scanner.next();
+                                    System.out.print("Enter Doctor ID: ");
+                                    int id = scanner.nextInt();
+                                    for(Doctor doctor : DoctorList) {
+                                        if(doctor.getID() == id) {
+                                            throw new CustomException("\nDoctor ID already exists\n");
+                                        }
+                                    }
+                                    System.out.print("Enter Doctor Phone Number: ");
+                                    String phone_number = scanner.next();
+                                    System.out.print("Specialization of Doctor: ");
+                                    String specialization = scanner.next();
+                                    System.out.print("Qualification of Doctor: ");
+                                    String qualification = scanner.next();
+                                    System.out.print("Doctor's Salary: ");
+                                    int salary = scanner.nextInt();
 
-                                Doctor doctor = new Doctor(name, id, phone_number, specialization, qualification, salary);
-                                DoctorList.add(doctor);
-                                System.out.println("\nDoctor assigned successfully\n");
+                                    Doctor doctor = new Doctor(name, id, phone_number, specialization, qualification, salary);
+                                    DoctorList.add(doctor);
+                                    System.out.println("\nDoctor assigned successfully\n");
+                                } catch(CustomException e) {
+                                    System.out.println(e.getMessage());
+                                }
                                 break;
                             }
                             case 2:
@@ -239,11 +263,13 @@ public class HospitalManagementSystem {
                                 try{
                                     System.out.println("Search Doctor ID:  ");
                                     int search_id = scanner.nextInt();
+                                    boolean found = false;
 
                                     for(Doctor doctor : DoctorList)
                                     {
                                         if(doctor.getID() == search_id)
                                         {
+                                            found = true;
                                             System.out.print("Enter New Name: ");
                                             String new_name = scanner.next();
                                             doctor.setName(new_name);
@@ -260,14 +286,15 @@ public class HospitalManagementSystem {
                                             int new_salary = scanner.nextInt();
                                             doctor.setSalary(new_salary);
                                         }
-                                        else {
-                                            System.out.println("Doctor not found");
-                                            break;
-                                        }
                                     }
+                                    if(!found) {
+                                        throw new CustomException("\nDoctor not found\n");
+                                    }
+                                } catch(CustomException e) {
+                                    System.out.println(e.getMessage());
                                 } catch(Exception e)
                                 {
-                                    System.out.println("Invalid Input, Please try again");
+                                    System.out.println("\nInvalid Input, Please try again\n");
                                     scanner.nextLine();
                                 }
                                 break;
@@ -277,28 +304,31 @@ public class HospitalManagementSystem {
                                 try{
                                     System.out.println("Search Doctor ID:  ");
                                     int search_id = scanner.nextInt();
+                                    boolean found = false;
 
                                     for(Doctor doctor : DoctorList)
                                     {
                                         if(doctor.getID() == search_id)
                                         {
+                                            found = true;
                                             DoctorList.remove(doctor);
-                                            System.out.println("Assigned doctor deleted successfully\n");
-                                        }
-                                        else {
-                                            System.out.println("Doctor not found");
-                                            break;
+                                            System.out.println("\nAssigned doctor deleted successfully\n");
                                         }
                                     }
-                                }catch(Exception e)
+                                    if(!found) {
+                                        throw new CustomException("\nDoctor not found\n");
+                                    }
+                                } catch(CustomException e) {
+                                    System.out.println(e.getMessage());
+                                } catch(Exception e)
                                 {
-                                    System.out.println("Invalid Input, Please try again");
-                                    break;
+                                    System.out.println("\nInvalid Input, Please try again\n");
                                 }
+                                break;
                             }
                             case 5:
                             {
-                                System.out.println("Exiting Hospital Management System" + "\nThanks for using the management system");
+                                System.out.println("\nExiting From DoctorCRUD Successfully\n");
                                 break;
                             }
                             default:
@@ -318,7 +348,7 @@ public class HospitalManagementSystem {
                     {
                         choice = -1;
                         System.out.println("Enter what you want to do:");
-                        System.out.println("1. Create Appointment\n" + "2. View Appointment\n" + "3. Update Appointment\n" + "4. Delete Appointment\n" + "5. Exit\n");
+                        System.out.println("1. Create Appointment\n" + "2. View Appointment\n" + "3. Update Appointment\n" + "4. Delete Appointment\n" + "5. Exit From AppointmentCRUD\n");
 
                         while(choice<1 || choice>5)
                         {
@@ -328,7 +358,7 @@ public class HospitalManagementSystem {
                                 System.out.println(" ");
                                 if(choice<1 || choice>5)
                                 {
-                                    System.out.println("Invalid choice, Please Enter between 1 and 4");
+                                    System.out.println("\nInvalid choice, Please Enter between 1 and 4\n");
                                 }
                             }catch (Exception e){
                                 System.out.println("Invalid Choice");
@@ -339,22 +369,31 @@ public class HospitalManagementSystem {
                         {
                             case 1:
                             {
-                                System.out.print("Enter Appointment ID: ");
-                                int appointment_id = scanner.nextInt();
-                                System.out.print("Enter Patient ID: ");
-                                int patient_id = scanner.nextInt();
-                                System.out.print("Enter Doctor ID: ");
-                                int doctor_id = scanner.nextInt();
-                                System.out.print("Appointment Date: ");
-                                String date = scanner.next();
-                                System.out.print("Appointment Time: ");
-                                String time = scanner.next();
-                                System.out.print("Appointment Reason: ");
-                                String reason = scanner.next();
+                                try{
+                                    System.out.print("Enter Appointment ID: ");
+                                    int appointment_id = scanner.nextInt();
+                                    for(Appointment appointment : AppointmentList) {
+                                        if(appointment.getAppointment_id() == appointment_id) {
+                                            throw new CustomException("\nAppointment ID already exists\n");
+                                        }
+                                    }
+                                    System.out.print("Enter Patient ID: ");
+                                    int patient_id = scanner.nextInt();
+                                    System.out.print("Enter Doctor ID: ");
+                                    int doctor_id = scanner.nextInt();
+                                    System.out.print("Appointment Date: ");
+                                    String date = scanner.next();
+                                    System.out.print("Appointment Time: ");
+                                    String time = scanner.next();
+                                    System.out.print("Appointment Reason: ");
+                                    String reason = scanner.next();
 
-                                Appointment appointment = new Appointment(appointment_id, patient_id, doctor_id, date, time, reason);
-                                AppointmentList.add(appointment);
-                                System.out.println("\nAppointment Created Successfully\n");
+                                    Appointment appointment = new Appointment(appointment_id, patient_id, doctor_id, date, time, reason);
+                                    AppointmentList.add(appointment);
+                                    System.out.println("\nAppointment Created Successfully\n");
+                                } catch(CustomException e) {
+                                    System.out.println(e.getMessage());
+                                }
                                 break;
                             }
                             case 2:
@@ -370,11 +409,13 @@ public class HospitalManagementSystem {
                                 try{
                                     System.out.println("Search Appointment ID: ");
                                     int search_id = scanner.nextInt();
+                                    boolean found = false;
 
                                     for(Appointment appointment : AppointmentList)
                                     {
                                         if(appointment.getAppointment_id() == search_id)
                                         {
+                                            found = true;
                                             System.out.print("Enter Patient ID: ");
                                             int new_patient_id = scanner.nextInt();
                                             appointment.setPatient_id(new_patient_id);
@@ -391,13 +432,14 @@ public class HospitalManagementSystem {
                                             String new_reason = scanner.next();
                                             appointment.setReason(new_reason);
                                         }
-                                        else {
-                                            System.out.println("Appointment not found");
-                                            break;
-                                        }
                                     }
-                                }catch(Exception e) {
-                                    System.out.println("Invalid Input, Please try again");
+                                    if(!found) {
+                                        throw new CustomException("\nAppointment not found\n");
+                                    }
+                                } catch(CustomException e) {
+                                    System.out.println(e.getMessage());
+                                } catch(Exception e) {
+                                    System.out.println("\nInvalid Input, Please try again\n");
                                     scanner.nextLine();
                                 }
                                 break;
@@ -407,26 +449,29 @@ public class HospitalManagementSystem {
                                 try{
                                     System.out.println("Search Appointment ID: ");
                                     int search_id =  scanner.nextInt();
+                                    boolean found = false;
                                     for(Appointment appointment : AppointmentList)
                                     {
                                         if(appointment.getAppointment_id() == search_id)
                                         {
+                                            found = true;
                                             AppointmentList.remove(appointment);
                                         }
-                                        else {
-                                            System.out.println("Appointment not found");
-                                            break;
-                                        }
                                     }
+                                    if(!found) {
+                                        throw new CustomException("\nAppointment not found\n");
+                                    }
+                                } catch(CustomException e) {
+                                    System.out.println(e.getMessage());
                                 } catch(Exception e) {
-                                    System.out.println("Invalid Input, Please try again");
+                                    System.out.println("\nInvalid Input, Please try again\n");
                                     scanner.nextLine();
                                 }
                                 break;
                             }
                             case 5:
                             {
-                                System.out.println("Exiting Hospital Management System" + "\nThanks for using the management system");
+                                System.out.println("\nExiting From AppointmentCRUD Successfully\n");
                                 break;
                             }
                             default:
@@ -439,7 +484,7 @@ public class HospitalManagementSystem {
                     break;
                 }
                 case 4: {
-                    System.out.println("Exiting Hospital Management System" + "\nThanks for using the management system");
+                    System.out.println("\nExiting Hospital Management System" + "\nThanks for using the management system\n");
                     break;
                 }
                 default: {
