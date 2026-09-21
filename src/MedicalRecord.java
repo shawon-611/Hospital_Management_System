@@ -17,10 +17,10 @@ public class MedicalRecord {
     public int getRecordId(){
         return  this.record_id;
     }
-    public int getPatientId(){
+    public int getPatient_id(){
         return  this.patient_id;
     }
-    public int getDoctorId(){
+    public int getDoctor_id(){
         return  this.doctor_id;
     }
 
@@ -31,10 +31,10 @@ public class MedicalRecord {
         return  this.treatment;
     }
 
-    public void setPatientId(int patient_id){
+    public void setPatient_id(int patient_id){
         this.patient_id = patient_id;
     }
-    public void setDoctorId(int doctor_id){
+    public void setDoctor_id(int doctor_id){
         this.doctor_id = doctor_id;
     }
     public void setRecordIdId(int record_id){
