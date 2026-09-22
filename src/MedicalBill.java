@@ -1,11 +1,11 @@
 public class MedicalBill {
     private int bill_id;
     private int patient_id;
-    private double amount;
+    private int amount;
     private String bill_date;
     private String payment_status;
 
-    MedicalBill(int bill_id, int patient_id, double amount, String bill_date, String payment_status)
+    MedicalBill(int bill_id, int patient_id, int amount, String bill_date, String payment_status)
     {
         this.bill_id = bill_id;
         this.patient_id = patient_id;
@@ -22,7 +22,7 @@ public class MedicalBill {
     {
         return patient_id;
     }
-    public double getAmount()
+    public int getAmount()
     {
         return amount;
     }
@@ -43,7 +43,7 @@ public class MedicalBill {
     {
         this.patient_id = patient_id;
     }
-    public void setAmount(double amount)
+    public void setAmount(int amount)
     {
         this.amount = amount;
     }
@@ -61,7 +61,7 @@ public class MedicalBill {
         System.out.println("---Bill Details---\n");
         System.out.println("Bill ID: "+ bill_id);
         System.out.println("Patient ID: "+ patient_id);
-        System.out.println("Bill Amount: "+ amount);
+        System.out.println("Bill Amount: "+ amount +"$");
         System.out.println("Bill Date: "+ bill_date);
         System.out.println("Payment Status: "+ payment_status);
         System.out.println(" ");
