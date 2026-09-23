@@ -54,6 +54,6 @@ public class MedicalRecord {
         System.out.println("Doctor ID: " + doctor_id);
         System.out.println("Diagnosis: " + diagnosis);
         System.out.println("Treatment: " + treatment);
-        System.out.println(" ");
+        System.out.println(" \n");
     }
 }
