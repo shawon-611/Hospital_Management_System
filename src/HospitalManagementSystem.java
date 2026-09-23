@@ -659,11 +659,11 @@ public class HospitalManagementSystem {
                                         if (medicalBill.getBill_id() == search_id) {
                                             found = true;
                                             PatientList.remove(medicalBill);
-                                            System.out.println("\nMedical Record deleted successfully\n");
+                                            System.out.println("\nMedical Bill deleted successfully\n");
                                         }
                                     }
                                     if (!found) {
-                                        throw new CustomException("\nMedical Record not found\n");
+                                        throw new CustomException("\nBill not found\n");
                                     }
                                 } catch (CustomException e) {
                                     System.out.println(e.getMessage());
