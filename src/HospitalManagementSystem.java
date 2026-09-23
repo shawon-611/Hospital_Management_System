@@ -56,6 +56,7 @@ public class HospitalManagementSystem {
                             System.out.print("\nEnter your choice: ");
                             try {
                                 choice = scanner.nextInt();
+                                scanner.nextLine();
                                 System.out.println(" ");
                                 if (choice < 1 || choice > 5) {
                                     System.out.println("\nInvalid choice, Please Enter between 1 and 5\n");
@@ -108,6 +109,7 @@ public class HospitalManagementSystem {
                                 try {
                                     System.out.println("Search Patient ID:  ");
                                     int search_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     boolean found = false;
 
                                     for (Patient patient : PatientList) {
@@ -132,6 +134,7 @@ public class HospitalManagementSystem {
                                             System.out.print("Enter New Blood Group: ");
                                             String new_blood_group = scanner.nextLine();
                                             patient.setBlood_group(new_blood_group);
+                                            break;
                                         }
                                     }
                                     if (!found) {
@@ -156,6 +159,7 @@ public class HospitalManagementSystem {
                                             found = true;
                                             PatientList.remove(patient);
                                             System.out.println("\nPatient deleted successfully\n");
+                                            break;
                                         }
                                     }
                                     if (!found) {
@@ -194,6 +198,7 @@ public class HospitalManagementSystem {
                             System.out.print("\nEnter your choice: ");
                             try {
                                 choice = scanner.nextInt();
+                                scanner.nextLine();
                                 System.out.println(" ");
                                 if (choice < 1 || choice > 5) {
                                     System.out.println("\nInvalid choice, Please Enter between 1 and 5\n");
@@ -244,6 +249,7 @@ public class HospitalManagementSystem {
                                 try {
                                     System.out.println("Search Doctor ID:  ");
                                     int search_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     boolean found = false;
 
                                     for (Doctor doctor : DoctorList) {
@@ -265,6 +271,7 @@ public class HospitalManagementSystem {
                                             int new_salary = scanner.nextInt();
                                             scanner.nextLine();
                                             doctor.setSalary(new_salary);
+                                            break;
                                         }
                                     }
                                     if (!found) {
@@ -289,6 +296,7 @@ public class HospitalManagementSystem {
                                             found = true;
                                             DoctorList.remove(doctor);
                                             System.out.println("\nAssigned doctor deleted successfully\n");
+                                            break;
                                         }
                                     }
                                     if (!found) {
@@ -298,6 +306,7 @@ public class HospitalManagementSystem {
                                     System.out.println(e.getMessage());
                                 } catch (Exception e) {
                                     System.out.println("\nInvalid Input, Please try again\n");
+                                    scanner.nextLine();
                                 }
                                 break;
                             }
@@ -326,6 +335,7 @@ public class HospitalManagementSystem {
                             System.out.print("\nEnter your choice: ");
                             try {
                                 choice = scanner.nextInt();
+                                scanner.nextLine();
                                 System.out.println(" ");
                                 if (choice < 1 || choice > 5) {
                                     System.out.println("\nInvalid choice, Please Enter between 1 and 5\n");
@@ -416,6 +426,7 @@ public class HospitalManagementSystem {
                                 try {
                                     System.out.println("Search Appointment ID: ");
                                     int search_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     boolean found = false;
                                     for (Appointment appointment : AppointmentList) {
                                         if (appointment.getAppointment_id() == search_id) {
@@ -459,6 +470,7 @@ public class HospitalManagementSystem {
                             System.out.print("\nEnter your choice: ");
                             try {
                                 choice = scanner.nextInt();
+                                scanner.nextLine();
                                 System.out.println(" ");
                                 if (choice < 1 || choice > 5) {
                                     System.out.println("Invalid choice, Please Enter between 1 and 5");
@@ -509,6 +521,7 @@ public class HospitalManagementSystem {
                                 try {
                                     System.out.println("Search Record ID: ");
                                     int search_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     boolean found = false;
                                     for (MedicalRecord medicalRecord : MedicalRecordList) {
                                         if (medicalRecord.getRecordId() == search_id) {
@@ -527,7 +540,7 @@ public class HospitalManagementSystem {
                                             System.out.print("Treatment: ");
                                             String new_treatment = scanner.nextLine();
                                             medicalRecord.setTreatment(new_treatment);
-
+                                            break;
                                         }
                                     }
                                     if (!found) {
@@ -545,11 +558,13 @@ public class HospitalManagementSystem {
                                 try {
                                     System.out.println("Search Record ID: ");
                                     int search_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     boolean found = false;
                                     for (MedicalRecord medicalRecord : MedicalRecordList) {
                                         if (medicalRecord.getRecordId() == search_id) {
                                             found = true;
                                             MedicalRecordList.remove(medicalRecord);
+                                            break;
                                         }
                                     }
                                     if (!found) {
@@ -564,7 +579,7 @@ public class HospitalManagementSystem {
                                 break;
                             }
                             case 5: {
-                                System.out.println("\nExiting From AppointmentCRUD Successfully\n");
+                                System.out.println("\nExiting From Medical Record CRUD Successfully\n");
                                 break;
                             }
                             default: {
@@ -588,6 +603,7 @@ public class HospitalManagementSystem {
                             System.out.print("\nEnter your choice: ");
                             try {
                                 choice = scanner.nextInt();
+                                scanner.nextLine();
                                 System.out.println(" ");
                                 if (choice < 1 || choice > 5) {
                                     System.out.println("Invalid choice, Please Enter between 1 and 5");
@@ -637,6 +653,7 @@ public class HospitalManagementSystem {
                                 try {
                                     System.out.println("Search Bill ID:  ");
                                     int search_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     boolean found = false;
 
                                     for (MedicalBill medicalBill : MedicalBillList) {
@@ -656,7 +673,7 @@ public class HospitalManagementSystem {
                                             System.out.print("Enter New Payment Status: ");
                                             String new_payment_status = scanner.nextLine();
                                             medicalBill.setPayment_status(new_payment_status);
-
+                                            break;
                                         }
                                     }
                                     if (!found) {
@@ -672,8 +689,9 @@ public class HospitalManagementSystem {
                             }
                             case 4: {
                                 try {
-                                    System.out.println("Search Patient ID:  ");
+                                    System.out.println("Search Bill ID:  ");
                                     int search_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     boolean found = false;
 
                                     for (MedicalBill medicalBill : MedicalBillList) {
@@ -681,6 +699,7 @@ public class HospitalManagementSystem {
                                             found = true;
                                             MedicalBillList.remove(medicalBill);
                                             System.out.println("\nMedical Bill deleted successfully\n");
+                                            break;
                                         }
                                     }
                                     if (!found) {
