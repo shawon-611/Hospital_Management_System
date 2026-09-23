@@ -1,10 +1,15 @@
 import java.io.*;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class FileManager {
-    public static void main(String[] args) {
-        HospitalManagementSystem H = new HospitalManagementSystem();
+
+    private HospitalManagementSystem H;
+    public FileManager(HospitalManagementSystem H) {
+        this.H = H;
+    }
+    public void savePatients(){
+        //Patient File Created
+        //----------------------
         File patient_file = new File("Patient_File.txt");
         try{
             if(patient_file.createNewFile()){
@@ -13,30 +18,32 @@ public class FileManager {
             else{
                 System.out.println("File already exists: " + patient_file.getName());
             }
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("An error occurred: " + e.getMessage());
         }
 
+        //Patient File Writer
+        //-------------------
         if(!patient_file.exists()){
             return;
         }
         try {
             FileWriter patient_file_writer = new FileWriter(patient_file);
             for(Patient patient : H.getPatientList()) {
-                patient_file_writer.write("Patient Name: "+ patient.getName());
-                patient_file_writer.write("Patient ID: "+ patient.getID());
-                patient_file_writer.write("Patient Phone Number: "+ patient.getPhone_Number());
-                patient_file_writer.write("Patient Age: "+ patient.getAge());
-                patient_file_writer.write("Patient Address: "+ patient.getAddress());
-                patient_file_writer.write("Patient Diseases: "+ patient.getDiseases());
-                patient_file_writer.write("Patient Blood Group: "+ patient.getBlood_Group());
+                patient_file_writer.write("Patient Name: " + patient.getName() + "\n");
+                patient_file_writer.write("Patient ID: " + patient.getID() + "\n");
+                patient_file_writer.write("Patient Phone Number: " + patient.getPhone_Number() + "\n");
+                patient_file_writer.write("Patient Age: " + patient.getAge() + "\n");
+                patient_file_writer.write("Patient Address: " + patient.getAddress() + "\n");
+                patient_file_writer.write("Patient Diseases: " + patient.getDiseases() + "\n");
+                patient_file_writer.write("Patient Blood Group: " + patient.getBlood_Group() + "\n");
             }
             patient_file_writer.close();
 
         } catch(IOException e) {
             System.out.println("File not found: " + e.getMessage());
         }
-
+        //Patient File Read
         try{
             Scanner sc = new Scanner(patient_file);
             while(sc.hasNextLine()) {
@@ -45,7 +52,9 @@ public class FileManager {
             }
             sc.close();
         } catch(Exception e){
-            System.out.println(e.fillInStackTrace());
+            System.out.println(e.getMessage());
         }
     }
+
+
 }
