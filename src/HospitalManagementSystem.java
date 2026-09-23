@@ -69,7 +69,8 @@ public class HospitalManagementSystem {
                             case 1: {
                                 try {
                                     System.out.print("Enter Patient Name: ");
-                                    String name = scanner.next();
+                                    String name = scanner.nextLine();
+                                    scanner.nextLine();
                                     System.out.print("Enter Patient ID: ");
                                     int id = scanner.nextInt();
                                     for (Patient patient : PatientList) {
@@ -78,15 +79,16 @@ public class HospitalManagementSystem {
                                         }
                                     }
                                     System.out.print("Enter Patient Phone Number: ");
-                                    String phone_number = scanner.next();
+                                    String phone_number = scanner.nextLine();
+                                    scanner.nextLine();
                                     System.out.print("Enter Patient Age: ");
                                     int age = scanner.nextInt();
                                     System.out.print("Enter Patient Address: ");
-                                    String address = scanner.next();
+                                    String address = scanner.nextLine();
                                     System.out.print("Enter Patient Diseases: ");
-                                    String diseases = scanner.next();
+                                    String diseases = scanner.nextLine();
                                     System.out.print("Enter Patient Blood Group: ");
-                                    String blood_group = scanner.next();
+                                    String blood_group = scanner.nextLine();
 
                                     Patient patient = new Patient(name, id, phone_number, age, address, diseases, blood_group);
                                     PatientList.add(patient);
@@ -112,22 +114,23 @@ public class HospitalManagementSystem {
                                         if (patient.getID() == search_id) {
                                             found = true;
                                             System.out.print("Enter New Name: ");
-                                            String new_name = scanner.next();
+                                            String new_name = scanner.nextLine();
                                             patient.setName(new_name);
                                             System.out.print("Enter New Phone Number: ");
-                                            String new_phone_number = scanner.next();
+                                            String new_phone_number = scanner.nextLine();
                                             patient.setPhone_Number(new_phone_number);
+                                            scanner.nextLine();
                                             System.out.print("Enter New Age: ");
                                             int new_age = scanner.nextInt();
                                             patient.setAge(new_age);
                                             System.out.print("Enter New Address: ");
-                                            String new_address = scanner.next();
+                                            String new_address = scanner.nextLine();
                                             patient.setAddress(new_address);
                                             System.out.print("Enter New Diseases: ");
-                                            String new_diseases = scanner.next();
+                                            String new_diseases = scanner.nextLine();
                                             patient.setDiseases(new_diseases);
                                             System.out.print("Enter New Blood Group: ");
-                                            String new_blood_group = scanner.next();
+                                            String new_blood_group = scanner.nextLine();
                                             patient.setBlood_group(new_blood_group);
                                         }
                                     }
@@ -204,7 +207,8 @@ public class HospitalManagementSystem {
                             case 1: {
                                 try {
                                     System.out.print("Enter Doctor Name: ");
-                                    String name = scanner.next();
+                                    String name = scanner.nextLine();
+                                    scanner.nextLine();
                                     System.out.print("Enter Doctor ID: ");
                                     int id = scanner.nextInt();
                                     for (Doctor doctor : DoctorList) {
@@ -213,11 +217,11 @@ public class HospitalManagementSystem {
                                         }
                                     }
                                     System.out.print("Enter Doctor Phone Number: ");
-                                    String phone_number = scanner.next();
+                                    String phone_number = scanner.nextLine();
                                     System.out.print("Specialization of Doctor: ");
-                                    String specialization = scanner.next();
+                                    String specialization = scanner.nextLine();
                                     System.out.print("Qualification of Doctor: ");
-                                    String qualification = scanner.next();
+                                    String qualification = scanner.nextLine();
                                     System.out.print("Doctor's Salary: ");
                                     int salary = scanner.nextInt();
 
@@ -245,16 +249,16 @@ public class HospitalManagementSystem {
                                         if (doctor.getID() == search_id) {
                                             found = true;
                                             System.out.print("Enter New Name: ");
-                                            String new_name = scanner.next();
+                                            String new_name = scanner.nextLine();
                                             doctor.setName(new_name);
                                             System.out.print("Enter New Phone Number: ");
-                                            String new_phone_number = scanner.next();
+                                            String new_phone_number = scanner.nextLine();
                                             doctor.setPhone_Number(new_phone_number);
                                             System.out.print("Enter new Doctor's Specialization: ");
-                                            String new_specialization = scanner.next();
+                                            String new_specialization = scanner.nextLine();
                                             doctor.setSpecialization(new_specialization);
                                             System.out.print("Enter new Doctor's Qualification: ");
-                                            String new_qualification = scanner.next();
+                                            String new_qualification = scanner.nextLine();
                                             doctor.setQualification(new_qualification);
                                             System.out.print("Enter New Doctor's Salary: ");
                                             int new_salary = scanner.nextInt();
@@ -344,11 +348,11 @@ public class HospitalManagementSystem {
                                     System.out.print("Enter Doctor ID: ");
                                     int doctor_id = scanner.nextInt();
                                     System.out.print("Appointment Date: ");
-                                    String date = scanner.next();
+                                    String date = scanner.nextLine();
                                     System.out.print("Appointment Time: ");
-                                    String time = scanner.next();
+                                    String time = scanner.nextLine();
                                     System.out.print("Appointment Reason: ");
-                                    String reason = scanner.next();
+                                    String reason = scanner.nextLine();
 
                                     Appointment appointment = new Appointment(appointment_id, patient_id, doctor_id, date, time, reason);
                                     AppointmentList.add(appointment);
@@ -380,13 +384,13 @@ public class HospitalManagementSystem {
                                             int new_doctor_id = scanner.nextInt();
                                             appointment.setDoctor_id(new_doctor_id);
                                             System.out.print("Appointment Date: ");
-                                            String new_date = scanner.next();
+                                            String new_date = scanner.nextLine();
                                             appointment.setDate(new_date);
                                             System.out.print("Appointment Time: ");
-                                            String new_time = scanner.next();
+                                            String new_time = scanner.nextLine();
                                             appointment.setTime(new_time);
                                             System.out.print("Appointment Reason: ");
-                                            String new_reason = scanner.next();
+                                            String new_reason = scanner.nextLine();
                                             appointment.setReason(new_reason);
                                         }
                                     }
@@ -472,9 +476,9 @@ public class HospitalManagementSystem {
                                     System.out.print("Enter Doctor ID: ");
                                     int doctor_id = scanner.nextInt();
                                     System.out.print("Diagnosis: ");
-                                    String diagnosis = scanner.next();
+                                    String diagnosis = scanner.nextLine();
                                     System.out.print("Treatment: ");
-                                    String treatment = scanner.next();
+                                    String treatment = scanner.nextLine();
 
                                     MedicalRecord medicalRecord = new MedicalRecord(record_id, patient_id, doctor_id, diagnosis, treatment);
                                     MedicalRecordList.add(medicalRecord);
@@ -506,10 +510,10 @@ public class HospitalManagementSystem {
                                             int new_doctor_id = scanner.nextInt();
                                             medicalRecord.setDoctor_id(new_doctor_id);
                                             System.out.print("Diagnosis: ");
-                                            String new_diagnosis = scanner.next();
+                                            String new_diagnosis = scanner.nextLine();
                                             medicalRecord.setDiagnosis(new_diagnosis);
                                             System.out.print("Treatment: ");
-                                            String new_treatment = scanner.next();
+                                            String new_treatment = scanner.nextLine();
                                             medicalRecord.setTreatment(new_treatment);
 
                                         }
@@ -533,11 +537,11 @@ public class HospitalManagementSystem {
                                     for (MedicalRecord medicalRecord : MedicalRecordList) {
                                         if (medicalRecord.getRecordId() == search_id) {
                                             found = true;
-                                            AppointmentList.remove(medicalRecord);
+                                            MedicalRecordList.remove(medicalRecord);
                                         }
-                                        if (!found) {
-                                            throw new CustomException("\nMedical Record not found\n");
-                                        }
+                                    }
+                                    if (!found) {
+                                        throw new CustomException("\nMedical Record not found\n");
                                     }
                                 } catch (CustomException e) {
                                     System.out.println(e.getMessage());
@@ -548,7 +552,7 @@ public class HospitalManagementSystem {
                                 break;
                             }
                             case 5: {
-                                System.out.println("Exiting Hospital Management System" + "\nThanks for using the management system");
+                                System.out.println("\nExiting From AppointmentCRUD Successfully\n");
                                 break;
                             }
                             default: {
@@ -596,9 +600,9 @@ public class HospitalManagementSystem {
                                     System.out.print("Enter Bill Amount: ");
                                     int amount = scanner.nextInt();
                                     System.out.print("Enter Bill Date: ");
-                                    String bill_date = scanner.next();
+                                    String bill_date = scanner.nextLine();
                                     System.out.print("Enter Payment Status: ");
-                                    String payment_status = scanner.next();
+                                    String payment_status = scanner.nextLine();
 
                                     MedicalBill medicalBill = new MedicalBill(bill_id, patient_id, amount, bill_date, payment_status);
                                     MedicalBillList.add(medicalBill);
@@ -630,10 +634,10 @@ public class HospitalManagementSystem {
                                             int new_amount = scanner.nextInt();
                                             medicalBill.setAmount(new_amount);
                                             System.out.print("Enter New Bill Date: ");
-                                            String new_bill_date = scanner.next();
+                                            String new_bill_date = scanner.nextLine();
                                             medicalBill.setBill_date(new_bill_date);
                                             System.out.print("Enter New Payment Status: ");
-                                            String new_payment_status = scanner.next();
+                                            String new_payment_status = scanner.nextLine();
                                             medicalBill.setPayment_status(new_payment_status);
 
                                         }
@@ -658,7 +662,7 @@ public class HospitalManagementSystem {
                                     for (MedicalBill medicalBill : MedicalBillList) {
                                         if (medicalBill.getBill_id() == search_id) {
                                             found = true;
-                                            PatientList.remove(medicalBill);
+                                            MedicalBillList.remove(medicalBill);
                                             System.out.println("\nMedical Bill deleted successfully\n");
                                         }
                                     }
@@ -683,6 +687,7 @@ public class HospitalManagementSystem {
                             }
                         }
                     }
+                    break;
                 }
                 case 6: {
                     System.out.println("\nExiting Hospital Management System" + "\nThanks for using the management system\n");
