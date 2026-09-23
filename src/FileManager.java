@@ -7,7 +7,7 @@ public class FileManager {
     public FileManager(HospitalManagementSystem H) {
         this.H = H;
     }
-    public void savePatients(){
+    public void PatientFile(){
         //Patient File Created
         //----------------------
         File patient_file = new File("Patient_File.txt");
@@ -37,6 +37,8 @@ public class FileManager {
                 patient_file_writer.write("Patient Address: " + patient.getAddress() + "\n");
                 patient_file_writer.write("Patient Diseases: " + patient.getDiseases() + "\n");
                 patient_file_writer.write("Patient Blood Group: " + patient.getBlood_Group() + "\n");
+                patient_file_writer.write("======================================================");
+                patient_file_writer.write("\n");
             }
             patient_file_writer.close();
 
