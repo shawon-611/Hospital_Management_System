@@ -70,9 +70,9 @@ public class HospitalManagementSystem {
                                 try {
                                     System.out.print("Enter Patient Name: ");
                                     String name = scanner.nextLine();
-                                    scanner.nextLine();
                                     System.out.print("Enter Patient ID: ");
                                     int id = scanner.nextInt();
+                                    scanner.nextLine();
                                     for (Patient patient : PatientList) {
                                         if (patient.getID() == id) {
                                             throw new CustomException("\nPatient ID already exists\n");
@@ -80,9 +80,9 @@ public class HospitalManagementSystem {
                                     }
                                     System.out.print("Enter Patient Phone Number: ");
                                     String phone_number = scanner.nextLine();
-                                    scanner.nextLine();
                                     System.out.print("Enter Patient Age: ");
                                     int age = scanner.nextInt();
+                                    scanner.nextLine();
                                     System.out.print("Enter Patient Address: ");
                                     String address = scanner.nextLine();
                                     System.out.print("Enter Patient Diseases: ");
@@ -119,9 +119,9 @@ public class HospitalManagementSystem {
                                             System.out.print("Enter New Phone Number: ");
                                             String new_phone_number = scanner.nextLine();
                                             patient.setPhone_Number(new_phone_number);
-                                            scanner.nextLine();
                                             System.out.print("Enter New Age: ");
                                             int new_age = scanner.nextInt();
+                                            scanner.nextLine();
                                             patient.setAge(new_age);
                                             System.out.print("Enter New Address: ");
                                             String new_address = scanner.nextLine();
@@ -208,9 +208,9 @@ public class HospitalManagementSystem {
                                 try {
                                     System.out.print("Enter Doctor Name: ");
                                     String name = scanner.nextLine();
-                                    scanner.nextLine();
                                     System.out.print("Enter Doctor ID: ");
                                     int id = scanner.nextInt();
+                                    scanner.nextLine();
                                     for (Doctor doctor : DoctorList) {
                                         if (doctor.getID() == id) {
                                             throw new CustomException("\nDoctor ID already exists\n");
@@ -224,6 +224,7 @@ public class HospitalManagementSystem {
                                     String qualification = scanner.nextLine();
                                     System.out.print("Doctor's Salary: ");
                                     int salary = scanner.nextInt();
+                                    scanner.nextLine();
 
                                     Doctor doctor = new Doctor(name, id, phone_number, specialization, qualification, salary);
                                     DoctorList.add(doctor);
@@ -262,6 +263,7 @@ public class HospitalManagementSystem {
                                             doctor.setQualification(new_qualification);
                                             System.out.print("Enter New Doctor's Salary: ");
                                             int new_salary = scanner.nextInt();
+                                            scanner.nextLine();
                                             doctor.setSalary(new_salary);
                                         }
                                     }
@@ -338,6 +340,7 @@ public class HospitalManagementSystem {
                                 try {
                                     System.out.print("Enter Appointment ID: ");
                                     int appointment_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     for (Appointment appointment : AppointmentList) {
                                         if (appointment.getAppointment_id() == appointment_id) {
                                             throw new CustomException("\nAppointment ID already exists\n");
@@ -345,8 +348,10 @@ public class HospitalManagementSystem {
                                     }
                                     System.out.print("Enter Patient ID: ");
                                     int patient_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     System.out.print("Enter Doctor ID: ");
                                     int doctor_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     System.out.print("Appointment Date: ");
                                     String date = scanner.nextLine();
                                     System.out.print("Appointment Time: ");
@@ -379,9 +384,11 @@ public class HospitalManagementSystem {
                                             found = true;
                                             System.out.print("Enter Patient ID: ");
                                             int new_patient_id = scanner.nextInt();
+                                            scanner.nextLine();
                                             appointment.setPatient_id(new_patient_id);
                                             System.out.print("Enter Doctor ID: ");
                                             int new_doctor_id = scanner.nextInt();
+                                            scanner.nextLine();
                                             appointment.setDoctor_id(new_doctor_id);
                                             System.out.print("Appointment Date: ");
                                             String new_date = scanner.nextLine();
@@ -466,6 +473,7 @@ public class HospitalManagementSystem {
                                 try {
                                     System.out.print("Enter Medical Record ID: ");
                                     int record_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     for (MedicalRecord medicalRecord : MedicalRecordList) {
                                         if (medicalRecord.getRecordId() == record_id) {
                                             throw new CustomException("\nMedical Record ID already exists\n");
@@ -473,8 +481,10 @@ public class HospitalManagementSystem {
                                     }
                                     System.out.print("Enter Patient ID: ");
                                     int patient_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     System.out.print("Enter Doctor ID: ");
                                     int doctor_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     System.out.print("Diagnosis: ");
                                     String diagnosis = scanner.nextLine();
                                     System.out.print("Treatment: ");
@@ -505,9 +515,11 @@ public class HospitalManagementSystem {
                                             found = true;
                                             System.out.print("Enter Patient ID: ");
                                             int new_patient_id = scanner.nextInt();
+                                            scanner.nextLine();
                                             medicalRecord.setPatient_id(new_patient_id);
                                             System.out.print("Enter Doctor ID: ");
                                             int new_doctor_id = scanner.nextInt();
+                                            scanner.nextLine();
                                             medicalRecord.setDoctor_id(new_doctor_id);
                                             System.out.print("Diagnosis: ");
                                             String new_diagnosis = scanner.nextLine();
@@ -590,6 +602,7 @@ public class HospitalManagementSystem {
                                 try {
                                     System.out.print("Enter Medical Bill ID : ");
                                     int bill_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     for (MedicalBill medicalBill : MedicalBillList) {
                                         if (medicalBill.getBill_id() == bill_id) {
                                             throw new CustomException("\nMedical Bill ID already exists\n");
@@ -597,8 +610,10 @@ public class HospitalManagementSystem {
                                     }
                                     System.out.print("Enter Patient ID: ");
                                     int patient_id = scanner.nextInt();
+                                    scanner.nextLine();
                                     System.out.print("Enter Bill Amount: ");
                                     int amount = scanner.nextInt();
+                                    scanner.nextLine();
                                     System.out.print("Enter Bill Date: ");
                                     String bill_date = scanner.nextLine();
                                     System.out.print("Enter Payment Status: ");
@@ -629,9 +644,11 @@ public class HospitalManagementSystem {
                                             found = true;
                                             System.out.print("Enter New Patient ID: ");
                                             int new_patient_id = scanner.nextInt();
+                                            scanner.nextLine();
                                             medicalBill.setPatient_id(new_patient_id);
                                             System.out.print("Enter New Amount: ");
                                             int new_amount = scanner.nextInt();
+                                            scanner.nextLine();
                                             medicalBill.setAmount(new_amount);
                                             System.out.print("Enter New Bill Date: ");
                                             String new_bill_date = scanner.nextLine();
