@@ -178,6 +178,10 @@ public class FileManager {
             System.out.println("An error occurred: " + e.getMessage());
         }
     }
+
+    public void MedicalBillFile() {
+
+    }
 }
 
 
