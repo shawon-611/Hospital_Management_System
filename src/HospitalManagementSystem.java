@@ -13,6 +13,7 @@ public class HospitalManagementSystem {
         fileManager = new FileManager(this);
         fileManager.loadPatientFile();
         fileManager.loadDoctorFile();
+        fileManager.loadAppointmentFile();
     }
 
     public ArrayList<Patient> getPatientList() {
@@ -390,6 +391,7 @@ public class HospitalManagementSystem {
                                     Appointment appointment = new Appointment(appointment_id, patient_id, doctor_id, date, time, reason);
                                     AppointmentList.add(appointment);
                                     System.out.println("\nAppointment Created Successfully\n");
+                                    fileManager.AppointmentFile();
                                 } catch (CustomException e) {
                                     System.out.println(e.getMessage());
                                 }
@@ -427,6 +429,8 @@ public class HospitalManagementSystem {
                                             System.out.print("Appointment Reason: ");
                                             String new_reason = scanner.nextLine();
                                             appointment.setReason(new_reason);
+                                            fileManager.AppointmentFile();
+                                            break;
                                         }
                                     }
                                     if (!found) {
@@ -450,6 +454,9 @@ public class HospitalManagementSystem {
                                         if (appointment.getAppointment_id() == search_id) {
                                             found = true;
                                             AppointmentList.remove(appointment);
+                                            fileManager.AppointmentFile();
+                                            System.out.println("\nAppointment Deleted Successfully\n");
+                                            break;
                                         }
                                     }
                                     if (!found) {

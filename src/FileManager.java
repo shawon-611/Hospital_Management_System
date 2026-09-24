@@ -123,7 +123,61 @@ public class FileManager {
         }
     }
 
+    //Appointment ArrayList to File
+    public void AppointmentFile() {
+        File appointment_file = new File("Appointment_File.txt");
+        try{
+            if(!appointment_file.exists()){
+                appointment_file.createNewFile();
+            }
+            //Doctor File Write
+            FileWriter appointment_fileWriter = new FileWriter(appointment_file);
 
+            for (Appointment appointment : H.getAppointmentList()) {
+
+                appointment_fileWriter.write("---Appointment Details---\n");
+                appointment_fileWriter.write(appointment.getAppointment_id() + "\n");
+                appointment_fileWriter.write(appointment.getPatient_id() + "\n");
+                appointment_fileWriter.write(appointment.getDoctor_id() + "\n");
+                appointment_fileWriter.write(appointment.getDate() + "\n");
+                appointment_fileWriter.write(appointment.getTime() + "\n");
+                appointment_fileWriter.write(appointment.getReason() + "\n");
+                appointment_fileWriter.write("======================================================\n");
+
+            }
+            appointment_fileWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
+
+    //Load Doctor Data ArrayList to File
+    public void loadAppointmentFile() {
+        File appointment_file = new File("Appointment_File.txt");
+        try {
+            if(!appointment_file.exists()){
+                return;
+            }
+            Scanner sc = new Scanner(appointment_file);
+            while(sc.hasNextLine()) {
+                sc.nextLine();
+                int appointment_id = Integer.parseInt(sc.nextLine());   //Covert String to Integer
+                int patient_id = Integer.parseInt(sc.nextLine());
+                int doctor_id = Integer.parseInt(sc.nextLine());
+                String date = sc.nextLine();
+                String time = sc.nextLine();
+                String reason  = sc.nextLine();
+                sc.nextLine();
+
+                Appointment appointment = new Appointment(appointment_id, patient_id, doctor_id, date, time, reason);
+                H.getAppointmentList().add(appointment);
+            }
+            sc.close();
+
+        } catch(Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
 }
 
 
