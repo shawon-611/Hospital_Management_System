@@ -37,7 +37,7 @@ public class MedicalRecord {
     public void setDoctor_id(int doctor_id){
         this.doctor_id = doctor_id;
     }
-    public void setRecordIdId(int record_id){
+    public void setRecordId(int record_id){
         this.record_id = record_id;
     }
     public void setDiagnosis(String diagnosis){
