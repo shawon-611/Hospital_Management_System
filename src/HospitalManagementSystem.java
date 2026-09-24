@@ -663,6 +663,7 @@ public class HospitalManagementSystem {
                                     MedicalBill medicalBill = new MedicalBill(bill_id, patient_id, amount, bill_date, payment_status);
                                     MedicalBillList.add(medicalBill);
                                     System.out.println("\nMedical Bill added successfully\n");
+                                    fileManager.MedicalBillFile();
                                 } catch (CustomException e) {
                                     System.out.println(e.getMessage());
                                 }
@@ -698,6 +699,7 @@ public class HospitalManagementSystem {
                                             System.out.print("Enter New Payment Status: ");
                                             String new_payment_status = scanner.nextLine();
                                             medicalBill.setPayment_status(new_payment_status);
+                                            fileManager.MedicalBillFile();
                                             break;
                                         }
                                     }
@@ -723,6 +725,7 @@ public class HospitalManagementSystem {
                                         if (medicalBill.getBill_id() == search_id) {
                                             found = true;
                                             MedicalBillList.remove(medicalBill);
+                                            fileManager.MedicalBillFile();
                                             System.out.println("\nMedical Bill deleted successfully\n");
                                             break;
                                         }
