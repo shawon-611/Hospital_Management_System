@@ -181,7 +181,28 @@ public class FileManager {
 
     //Medical Record ArrayList to File
     public void MedicalRecordFile() {
-        File record_file = new File("Medical_Record_File.txt");
+        File record_file = new File("MedicalRecord_File.txt");
+        try{
+            if(!record_file.exists()){
+                record_file.createNewFile();
+            }
+            //Medical Record File Write
+            FileWriter record_file_fileWriter = new FileWriter(record_file);
+
+            for (MedicalRecord medicalRecord : H.getMedicalRecordList()) {
+
+                record_file_fileWriter.write("---Medical Record Details---\n");
+                record_file_fileWriter.write(medicalRecord.getRecordId() + "\n");
+                record_file_fileWriter.write(medicalRecord.getPatient_id() + "\n");
+                record_file_fileWriter.write(medicalRecord.getDiagnosis() + "\n");
+                record_file_fileWriter.write(medicalRecord.getTreatment() + "\n");
+                record_file_fileWriter.write("======================================================\n");
+
+            }
+            record_file_fileWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
     }
 
 
