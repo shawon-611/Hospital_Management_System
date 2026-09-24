@@ -24,10 +24,10 @@ public class MedicalRecord {
         return  this.doctor_id;
     }
 
-    public String getDiagnosisId(){
+    public String getDiagnosis(){
         return  this.diagnosis;
     }
-    public String getTreatmentId(){
+    public String getTreatment(){
         return  this.treatment;
     }
 
