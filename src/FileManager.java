@@ -1,4 +1,6 @@
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class FileManager {
@@ -7,56 +9,65 @@ public class FileManager {
     public FileManager(HospitalManagementSystem H) {
         this.H = H;
     }
+    //Patient ArrayList to File
     public void PatientFile(){
-        //Patient File Created
-        //----------------------
+
         File patient_file = new File("Patient_File.txt");
         try{
-            if(patient_file.createNewFile()){
-                System.out.println("File created: " + patient_file.getName());
+            if(!patient_file.exists()){
+                patient_file.createNewFile();
             }
-            else{
-                System.out.println("File already exists: " + patient_file.getName());
+            //Patient File Write
+            FileWriter patient_fileWriter = new FileWriter(patient_file);
+
+            for (Patient patient : H.getPatientList()) {
+
+                patient_fileWriter.write("---Patient Details---\n");
+                patient_fileWriter.write(patient.getName() + "\n");
+                patient_fileWriter.write(patient.getID() + "\n");
+                patient_fileWriter.write(patient.getPhone_Number() + "\n");
+                patient_fileWriter.write(patient.getAge() + "\n");
+                patient_fileWriter.write(patient.getAddress() + "\n");
+                patient_fileWriter.write(patient.getDiseases() + "\n");
+                patient_fileWriter.write(patient.getBlood_Group() + "\n");
+                patient_fileWriter.write("======================================================\n");
+
             }
+            patient_fileWriter.close();
         } catch (IOException e) {
             System.out.println("An error occurred: " + e.getMessage());
         }
-
-        //Patient File Writer
-        //-------------------
-        if(!patient_file.exists()){
-            return;
-        }
+    }
+    //Load Patient Data ArrayList to File
+    public void loadPatientFile() {
+        File patient_file = new File("Patient_File.txt");
         try {
-            FileWriter patient_file_writer = new FileWriter(patient_file);
-            for(Patient patient : H.getPatientList()) {
-                patient_file_writer.write("Patient Name: " + patient.getName() + "\n");
-                patient_file_writer.write("Patient ID: " + patient.getID() + "\n");
-                patient_file_writer.write("Patient Phone Number: " + patient.getPhone_Number() + "\n");
-                patient_file_writer.write("Patient Age: " + patient.getAge() + "\n");
-                patient_file_writer.write("Patient Address: " + patient.getAddress() + "\n");
-                patient_file_writer.write("Patient Diseases: " + patient.getDiseases() + "\n");
-                patient_file_writer.write("Patient Blood Group: " + patient.getBlood_Group() + "\n");
-                patient_file_writer.write("======================================================");
-                patient_file_writer.write("\n");
+            if(!patient_file.exists()){
+                return;
             }
-            patient_file_writer.close();
-
-        } catch(IOException e) {
-            System.out.println("File not found: " + e.getMessage());
-        }
-        //Patient File Read
-        try{
             Scanner sc = new Scanner(patient_file);
             while(sc.hasNextLine()) {
-                String patient_data = sc.nextLine();
-                System.out.println(patient_data);
+                sc.nextLine();
+                String name = sc.nextLine();
+                int id = Integer.parseInt(sc.nextLine());   //Covert String to Integer
+                String phone_number = sc.nextLine();
+                int age = Integer.parseInt(sc.nextLine());
+                String address = sc.nextLine();
+                String diseases  = sc.nextLine();
+                String blood_group = sc.nextLine();
+                sc.nextLine();
+
+                Patient patient = new Patient(name, id, phone_number, age, address, diseases, blood_group);
+                H.getPatientList().add(patient);
             }
             sc.close();
-        } catch(Exception e){
-            System.out.println(e.getMessage());
+
+        } catch(Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
         }
     }
 
 
 }
+
+
