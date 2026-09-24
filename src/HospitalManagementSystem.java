@@ -8,16 +8,26 @@ public class HospitalManagementSystem {
     private ArrayList<MedicalRecord> MedicalRecordList = new ArrayList<>();
     private ArrayList<MedicalBill> MedicalBillList = new ArrayList<>();
 
+    private FileManager fileManager;
+    public HospitalManagementSystem() {
+        fileManager = new FileManager(this);
+        fileManager.loadPatientFile();
+    }
+
     public ArrayList<Patient> getPatientList() {
         return PatientList;
     }
-
     public ArrayList<Doctor> getDoctorList() {
         return DoctorList;
     }
-
     public ArrayList<Appointment> getAppointmentList() {
         return AppointmentList;
+    }
+    public ArrayList<MedicalRecord> getMedicalRecordList() {
+        return MedicalRecordList;
+    }
+    public ArrayList<MedicalBill> getMedicalBillList() {
+        return MedicalBillList;
     }
 
     public void MainMenu() {
@@ -94,6 +104,7 @@ public class HospitalManagementSystem {
                                     Patient patient = new Patient(name, id, phone_number, age, address, diseases, blood_group);
                                     PatientList.add(patient);
                                     System.out.println("\nPatient added successfully\n");
+                                    fileManager.PatientFile();
                                 } catch (CustomException e) {
                                     System.out.println(e.getMessage());
                                 }
@@ -134,6 +145,8 @@ public class HospitalManagementSystem {
                                             System.out.print("Enter New Blood Group: ");
                                             String new_blood_group = scanner.nextLine();
                                             patient.setBlood_group(new_blood_group);
+
+                                            fileManager.PatientFile();
                                             break;
                                         }
                                     }
@@ -158,6 +171,7 @@ public class HospitalManagementSystem {
                                         if (patient.getID() == search_id) {
                                             found = true;
                                             PatientList.remove(patient);
+                                            fileManager.PatientFile();
                                             System.out.println("\nPatient deleted successfully\n");
                                             break;
                                         }
