@@ -205,6 +205,33 @@ public class FileManager {
             System.out.println("An error occurred: " + e.getMessage());
         }
     }
+
+    //Load Medical Bill Data ArrayList to File
+    public void loadMedicalBillFile() {
+        File medicalBill_file = new File("MedicalBill_File.txt");
+        try {
+            if(!medicalBill_file.exists()){
+                return;
+            }
+            Scanner sc = new Scanner(medicalBill_file);
+            while(sc.hasNextLine()) {
+                sc.nextLine();
+                int bill_id = Integer.parseInt(sc.nextLine());   //Covert String to Integer
+                int patient_id = Integer.parseInt(sc.nextLine());
+                int amount = Integer.parseInt(sc.nextLine());
+                String bill_date = sc.nextLine();
+                String payment_status = sc.nextLine();
+                sc.nextLine();
+
+                MedicalBill medicalBill = new MedicalBill(bill_id, patient_id, amount, bill_date, payment_status);
+                H.getMedicalBillList().add(medicalBill);
+            }
+            sc.close();
+
+        } catch(Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
 }
 
 
