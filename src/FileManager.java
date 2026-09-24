@@ -67,6 +67,62 @@ public class FileManager {
         }
     }
 
+    //Doctor ArrayList to File
+    public void DoctorFile() {
+        File doctor_file = new File("Doctor_File.txt");
+        try{
+            if(!doctor_file.exists()){
+                doctor_file.createNewFile();
+            }
+            //Doctor File Write
+            FileWriter doctor_fileWriter = new FileWriter(doctor_file);
+
+            for (Doctor doctor : H.getDoctorList()) {
+
+                doctor_fileWriter.write("---Doctor Details---\n");
+                doctor_fileWriter.write(doctor.getName() + "\n");
+                doctor_fileWriter.write(doctor.getID() + "\n");
+                doctor_fileWriter.write(doctor.getPhone_Number() + "\n");
+                doctor_fileWriter.write(doctor.getSpecialization() + "\n");
+                doctor_fileWriter.write(doctor.getQualification() + "\n");
+                doctor_fileWriter.write(doctor.getSalary() + "\n");
+                doctor_fileWriter.write("======================================================\n");
+
+            }
+            doctor_fileWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
+
+    //Load Doctor Data ArrayList to File
+    public void loadDoctorFile() {
+        File doctor_file = new File("Doctor_File.txt");
+        try {
+            if(!doctor_file.exists()){
+                return;
+            }
+            Scanner sc = new Scanner(doctor_file);
+            while(sc.hasNextLine()) {
+                sc.nextLine();
+                String name = sc.nextLine();
+                int id = Integer.parseInt(sc.nextLine());   //Covert String to Integer
+                String phone_number = sc.nextLine();
+                String specialization = sc.nextLine();
+                String qualification  = sc.nextLine();
+                int salary = Integer.parseInt(sc.nextLine());
+                sc.nextLine();
+
+                Doctor doctor = new Doctor(name, id, phone_number, specialization, qualification, salary);
+                H.getDoctorList().add(doctor);
+            }
+            sc.close();
+
+        } catch(Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
+
 
 }
 

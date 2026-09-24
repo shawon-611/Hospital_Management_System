@@ -12,6 +12,7 @@ public class HospitalManagementSystem {
     public HospitalManagementSystem() {
         fileManager = new FileManager(this);
         fileManager.loadPatientFile();
+        fileManager.loadDoctorFile();
     }
 
     public ArrayList<Patient> getPatientList() {
@@ -248,6 +249,7 @@ public class HospitalManagementSystem {
                                     Doctor doctor = new Doctor(name, id, phone_number, specialization, qualification, salary);
                                     DoctorList.add(doctor);
                                     System.out.println("\nDoctor assigned successfully\n");
+                                    fileManager.DoctorFile();
                                 } catch (CustomException e) {
                                     System.out.println(e.getMessage());
                                 }
@@ -285,6 +287,7 @@ public class HospitalManagementSystem {
                                             int new_salary = scanner.nextInt();
                                             scanner.nextLine();
                                             doctor.setSalary(new_salary);
+                                            fileManager.DoctorFile();
                                             break;
                                         }
                                     }
@@ -309,6 +312,7 @@ public class HospitalManagementSystem {
                                         if (doctor.getID() == search_id) {
                                             found = true;
                                             DoctorList.remove(doctor);
+                                            fileManager.DoctorFile();
                                             System.out.println("\nAssigned doctor deleted successfully\n");
                                             break;
                                         }
