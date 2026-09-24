@@ -14,6 +14,7 @@ public class HospitalManagementSystem {
         fileManager.loadPatientFile();
         fileManager.loadDoctorFile();
         fileManager.loadAppointmentFile();
+        fileManager.loadMedicalBillFile();
     }
 
     public ArrayList<Patient> getPatientList() {
