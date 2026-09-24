@@ -531,6 +531,7 @@ public class HospitalManagementSystem {
                                     MedicalRecord medicalRecord = new MedicalRecord(record_id, patient_id, doctor_id, diagnosis, treatment);
                                     MedicalRecordList.add(medicalRecord);
                                     System.out.println("\nMedical Record Created Successfully\n");
+                                    fileManager.MedicalRecordFile();
                                     break;
                                 } catch (CustomException e) {
                                     System.out.println(e.getMessage());
@@ -566,6 +567,7 @@ public class HospitalManagementSystem {
                                             System.out.print("Treatment: ");
                                             String new_treatment = scanner.nextLine();
                                             medicalRecord.setTreatment(new_treatment);
+                                            fileManager.MedicalRecordFile();
                                             break;
                                         }
                                     }
@@ -590,6 +592,7 @@ public class HospitalManagementSystem {
                                         if (medicalRecord.getRecordId() == search_id) {
                                             found = true;
                                             MedicalRecordList.remove(medicalRecord);
+                                            fileManager.MedicalRecordFile();
                                             break;
                                         }
                                     }
