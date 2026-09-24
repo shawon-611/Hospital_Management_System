@@ -14,6 +14,7 @@ public class HospitalManagementSystem {
         fileManager.loadPatientFile();
         fileManager.loadDoctorFile();
         fileManager.loadAppointmentFile();
+        fileManager.loadMedicalRecordFile();
         fileManager.loadMedicalBillFile();
     }
 
@@ -150,6 +151,7 @@ public class HospitalManagementSystem {
                                             patient.setBlood_group(new_blood_group);
 
                                             fileManager.PatientFile();
+                                            System.out.println("\nPatient Updated successfully\n");
                                             break;
                                         }
                                     }
@@ -290,6 +292,7 @@ public class HospitalManagementSystem {
                                             scanner.nextLine();
                                             doctor.setSalary(new_salary);
                                             fileManager.DoctorFile();
+                                            System.out.println("\nDoctor Updated successfully\n");
                                             break;
                                         }
                                     }
@@ -431,6 +434,7 @@ public class HospitalManagementSystem {
                                             String new_reason = scanner.nextLine();
                                             appointment.setReason(new_reason);
                                             fileManager.AppointmentFile();
+                                            System.out.println("\nAppointment Updated Successfully\n");
                                             break;
                                         }
                                     }
@@ -568,6 +572,7 @@ public class HospitalManagementSystem {
                                             String new_treatment = scanner.nextLine();
                                             medicalRecord.setTreatment(new_treatment);
                                             fileManager.MedicalRecordFile();
+                                            System.out.println("\nMedical Record Updated Successfully\n");
                                             break;
                                         }
                                     }
@@ -593,6 +598,7 @@ public class HospitalManagementSystem {
                                             found = true;
                                             MedicalRecordList.remove(medicalRecord);
                                             fileManager.MedicalRecordFile();
+                                            System.out.println("\nMedical Record Deleted Successfully\n");
                                             break;
                                         }
                                     }
@@ -704,6 +710,7 @@ public class HospitalManagementSystem {
                                             String new_payment_status = scanner.nextLine();
                                             medicalBill.setPayment_status(new_payment_status);
                                             fileManager.MedicalBillFile();
+                                            System.out.println("\nMedical Bill Updated successfully\n");
                                             break;
                                         }
                                     }
