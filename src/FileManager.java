@@ -179,8 +179,31 @@ public class FileManager {
         }
     }
 
+    //MedicalBill ArrayList to File
     public void MedicalBillFile() {
+        File medicalBill_file = new File("MedicalBill_File.txt");
+        try{
+            if(!medicalBill_file.exists()){
+                medicalBill_file.createNewFile();
+            }
+            //Medical Bill File Write
+            FileWriter medicalBill_fileWriter = new FileWriter(medicalBill_file);
 
+            for (MedicalBill medicalBill : H.getMedicalBillList()) {
+
+                medicalBill_fileWriter.write("---Medical Bill Details---\n");
+                medicalBill_fileWriter.write(medicalBill.getBill_id() + "\n");
+                medicalBill_fileWriter.write(medicalBill.getPatient_id() + "\n");
+                medicalBill_fileWriter.write(medicalBill.getAmount() + "\n");
+                medicalBill_fileWriter.write(medicalBill.getBill_date() + "\n");
+                medicalBill_fileWriter.write(medicalBill.getPayment_status() + "\n");
+                medicalBill_fileWriter.write("======================================================\n");
+
+            }
+            medicalBill_fileWriter.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
     }
 }
 
