@@ -194,6 +194,7 @@ public class FileManager {
                 record_file_fileWriter.write("---Medical Record Details---\n");
                 record_file_fileWriter.write(medicalRecord.getRecordId() + "\n");
                 record_file_fileWriter.write(medicalRecord.getPatient_id() + "\n");
+                record_file_fileWriter.write(medicalRecord.getDoctor_id() + "\n");
                 record_file_fileWriter.write(medicalRecord.getDiagnosis() + "\n");
                 record_file_fileWriter.write(medicalRecord.getTreatment() + "\n");
                 record_file_fileWriter.write("======================================================\n");
@@ -205,11 +206,32 @@ public class FileManager {
         }
     }
 
+    //Load Medical Bill Data ArrayList to File
+    public void loadMedicalRecordFile() {
+        File record_file = new File("MedicalRecord_File.txt");
+        try {
+            if(!record_file.exists()){
+                return;
+            }
+            Scanner sc = new Scanner(record_file);
+            while(sc.hasNextLine()) {
+                sc.nextLine();
+                int record_id = Integer.parseInt(sc.nextLine());   //Covert String to Integer
+                int patient_id = Integer.parseInt(sc.nextLine());
+                int doctor_id = Integer.parseInt(sc.nextLine());
+                String diagnosis = sc.nextLine();
+                String treatment = sc.nextLine();
+                sc.nextLine();
 
+                MedicalRecord medicalRecord = new MedicalRecord(record_id, patient_id, doctor_id, diagnosis, treatment);
+                H.getMedicalRecordList().add(medicalRecord);
+            }
+            sc.close();
 
-
-
-
+        } catch(Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        }
+    }
 
     //MedicalBill ArrayList to File
     public void MedicalBillFile() {
