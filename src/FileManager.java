@@ -179,6 +179,17 @@ public class FileManager {
         }
     }
 
+    //Medical Record ArrayList to File
+    public void MedicalRecordFile() {
+        File record_file = new File("Medical_Record_File.txt");
+    }
+
+
+
+
+
+
+
     //MedicalBill ArrayList to File
     public void MedicalBillFile() {
         File medicalBill_file = new File("MedicalBill_File.txt");
@@ -232,6 +243,7 @@ public class FileManager {
             System.out.println("An error occurred: " + e.getMessage());
         }
     }
+
 }
 
 
